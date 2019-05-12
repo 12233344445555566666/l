@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/css" href="5a.css" ?>
+
+<student>
+
+<stu>
+<p>
+<usn> 4ni15is111</usn>
+<name> srinivas</name>
+<college> nie </college>
+<branch> ise </branch>
+<year>2015 </year>
+<email> sri@gmail.com </email>
+</p>
+</stu>
+
+<stu>
+<p>
+<usn> 4ni16is112   </usn>
+<name> subrahmanya </name>
+<college> nie </college>
+<branch> ise </branch>
+<year>2016 </year>
+<email> subbu@gmail.com </email>
+</p>
+</stu>
+
+<stu>
+<p>
+<usn> 4jc14cs111 </usn>
+<name> karthik </name>
+<college> jc </college>
+<branch> cse </branch>
+<year>2014 </year>
+<email> karu99@gmail.com </email>
+</p>
+</stu>
+
+</student>

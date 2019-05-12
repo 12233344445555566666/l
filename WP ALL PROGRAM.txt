@@ -1,0 +1,774 @@
+12. php12.html
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> <title>Personal Details DB</title> </head>
+<body>
+<form action="prgm12.php" method="post">
+<p>
+<b>Add Entry</b> <br/>
+ACCESSION NO: <input type="text" name="accno" /> <br />
+TITLE: <input type="text" name="title" /> <br />
+AUTHOR: <input type="text" name="author" /> <br />
+Edition: <input type="text" name="edition" /> <br />
+Publisher: <input type="text" name="publisher" /> <br />
+<input type="submit" value="Add Details" />
+</p>
+</form>
+<hr/>
+<form action="prog12ret.php" method="post">
+<p>
+<b>Search Book</b> <br/>
+Title: <input type="text" name="title" />
+<input type="submit" value="Search" />
+</p>
+</form>
+</body>
+</html>
+
+php12.php
+<?php
+$con = mysql_connect("localhost","viis102","viis102");
+if (!$con)
+{
+die('Could not connect: ' . mysql_error());
+}
+mysql_select_db("6isb5", $con);
+$sql="INSERT INTO 6isb5.sata102 VALUES('$_POST[accno]','$_POST[title]','$_POST[author]','$_POST[edition]','$_POST[publisher]')";
+if (!mysql_query($sql,$con))
+{
+die('Error: ' . mysql_error());
+}
+echo "1 Record Added";
+mysql_close($con);
+?>
+php12ret.php
+<?php
+$con = mysql_connect("localhost","viis102","viis102");
+if (!$con)
+{
+die('Could not connect: ' . mysql_error());
+}
+mysql_select_db("6isb5", $con);
+$sql="SELECT * FROM 6isb5.sata102 WHERE Title='$_POST[title]'";
+$result=mysql_query($sql,$con);
+echo "<table border='1'>
+<tr>
+<th>Access No</th>
+<th>Title</th>
+<th>Author</th>
+<th>Edition</th>
+<th>Publication</th>
+</tr>";
+while($row = mysql_fetch_array($result))
+{
+echo "<tr><td>" . $row['accno'] . "</td>";
+echo "<td>" . $row['title'] . "</td>";
+echo "<td>" . $row['author'] . "</td>";
+echo "<td>" . $row['edition'] . "</td>";
+echo "<td>" . $row['publisher'] . "</td></tr>";
+}
+echo "</table>";
+mysql_close($con);
+?>
+
+11 a. 
+php11a.html
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> <title>Cookies</title> </head>
+<body>
+<form action="php11a.php" method="post">
+<p>
+The last visited time was <input type="submit" name="Display Now"/>
+</p>
+</form>
+</body>
+</html>
+
+php11a.php
+<?php
+$inTwoMonths=60*60*24*60+time();
+setcookie('lastVisit',date("G:i - m/d/y"),$inTwoMonths);
+if(isset($_COOKIE['lastVisit']))
+{
+$visit=$_COOKIE['lastVisit'];
+echo "Your last visit was - ".$visit;
+}
+else echo "You've got some stale cookies!";
+?>
+
+11 b 
+
+php11b.html
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> <title>SESSION PROGRAM </title> </head>
+<body>
+<form action="php11b.php" method="post">
+<p>
+</p>
+To see the number of page views count in this session <input type="submit" name="Click Here"/>
+</form>
+</body>
+</html>
+
+php11b.php
+<?php
+session_start();
+if(isset($_SESSION['views']))
+$_SESSION['views']=$_SESSION['views']+1;
+else
+$_SESSION['views']=1;
+echo "This page has been viewed ".$_SESSION['views']." times.";
+?>
+
+1.	p1.html
+
+
+    <!Doctype html public "-//w3c//DTP//XHTML 1.1//EN""http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> CSS Program 1 </title>
+<link rel="stylesheet" type="text/css" href="p1.css">
+</head>
+<body bgcolor="black">
+<p> <h1> <span style="color:orange">The National</span> <span style="color:white">Institute</span> <span style="color:green">of Engineering</span> </p>
+<h1 align="center"> Branches of NIE </h1>
+<ol>
+<li> Information Science </li>
+<li> Computer Science </li>
+<li> Mechanical Science </li>
+<li> Electronic and Communication </li>
+<li> Electrical and Electronics </li>
+<li> Civil </li>
+</ol>
+<table border=5>
+<caption> Table of Contents </caption>
+<tr>
+<td> Sem </td>
+<td> Subject </td>
+<td> Elective </td>
+</tr>
+<tr>
+<td> 1st </td>
+<td> CCP </td>
+<td> Null </td>
+</tr>
+<tr>
+<td> 3rd </td>
+<td> Data Structures </td>
+<td> Null </td>
+</tr>
+<tr>
+<td> 5th </td>
+<td> System Softwares </td>
+<td> Compiler Design </td>
+</tr>
+</body>
+</html>
+
+p1.css
+
+h1{text-align:center;border:1px solid;font-size:40px;font-style:courier;}
+h1{text-align:center;border:2px solid;font-size:25px;font-style:courier;}
+table{border:1px solid;font-size:25px;}
+table{border:2px solid;font-size:25px;}
+th{text-align:center;color:yellow;font-size:20px;}
+li{color:yellow;font-size:20px;}
+body{color:yellow;}
+
+
+2a. p3.html
+
+
+<html>
+<head>
+<title> Fibonacci Number </title>
+</head>
+<body>
+<script language="JavaScript" type="text/JavaScript";>
+var a=0,b=1,c=0,i;
+var n=parseInt(prompt("Enter the value for n:"));
+if(n<=0)
+document.write("Invalid");
+else
+{
+if(n==1)
+document.write(a);
+else
+{
+document.write(a);
+document.write(b);
+for(i=2;i<n;i++)
+{
+c=a+b;
+document.write(c);
+a=b;
+b=c;
+}
+}
+}
+</script>
+</body>
+</html>
+
+2b. p4.html
+
+<html>
+<head>
+<title> Squares </title>
+</head>
+<body>
+<script language="Javascript" type="text/javascript">
+var n,sq;
+n=parseInt(prompt("enter the range"))
+var res="numbers squares";
+if(n<0)
+{
+alert("invalid number")
+}
+for(var i=1;i<=n;i++)
+{
+sq=i*i;
+res=res + "\n" + i + '_' + sq;
+document.write(i +" " +  sq + "<br/>")
+alert(res);
+}
+</script>
+</body>
+</html>
+
+
+3a. p8.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Left Most Vowel Position</title>
+</head>
+<body>
+<script language:"JavaScript" ;type:"text/JavaScript">
+var s=prompt("enter a string");
+for(var i=0;i<s.length;i++)
+{
+var k;
+k=s.charAt(i);
+if((k=='a')||(k=='e')||(k=='i')||(k=='o')||(k=='u')||(k=='A')||(k=='E')||(k=='I')||(k=='O')||(k=='U'))
+{
+alert(i+1);
+break;
+}
+}
+</script>
+</body>
+</html>
+
+3b p6.html
+
+
+<html>
+<head>
+<title> Reverse </title>
+</head>
+<body bgcolor="cyan">
+<script language="JavaScript" type="text/JavaScript";>
+var x=prompt("Enter the value:");
+for(var i=x.length-1;i>=0;i--)
+{
+document.write(x[i]);
+}
+</script>
+</html>
+
+4a. USN1.html
+
+<html>
+<head>
+<title> USN and SEM </title>
+</head>
+<body>
+<script type="text/javascript">
+finder=function()
+{
+var a=document.getElementById('usn').value;
+var s=document.getElementById('sem').value;
+if(a.length==0 || s.length==0)
+{
+alert("One of the field is empty");
+return;
+}
+var usn_flag=0;
+var sem_flag=0;
+var b=a.toLowerCase();
+var str=b.search(/^[1-4][a-z][a-z][0-9][0-9][a-z][a-z][0-9][0-9][0-9]/);
+if(str==0)
+usn_flag=1;
+str=s.search(/^[1-8]$/);
+if(str==0)
+sem_flag=1;
+if(!sem_flag && !usn_flag)
+alert("Both USN & SEM are invalid");
+else if(sem_flag && !usn_flag)
+alert("Sem is valid\nUSN is invalid");
+else if(!sem_flag && usn_flag)
+alert("USN is valid\nSem is invalid");
+else
+alert("Both USN and Sem are valid");
+}
+</script>
+
+<form onsubmit=finder()>
+Enter USN:<input type=text id=usn><br>
+Enter Sem:<input type=text id=sem><br>
+<input type=submit value=submit>
+</form>
+</body>
+</html>
+
+4b USN2.html
+<html>
+<head>
+<title> USN </title>
+</head>
+<body>
+<script type="text/javascript">
+finder=function()
+{
+var a=document.getElementById('usn').value;
+if(a.length==0)
+{
+alert("USN is empty");
+return;
+}
+var b=a.toLowerCase();
+var str=b.search(/^[1-4][a-z][a-z][0-9][0-9][a-z][a-z][0-9][0-9][0-9]/);
+if(str==0)
+alert("usn is valid");
+else
+alert("usn is invalid");
+}
+</script>
+<form onsubmit=finder()>
+Enter USN:<input id=usn type=text><br>
+<input type=submit value=submit>
+</form>
+</body>
+</html>
+
+5a
+
+xml
+
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/css" href="stu.css" ?>
+
+<student>
+
+<stu>
+<p>
+<usn> 4ni15is111</usn>
+<name> srinivas</name>
+<college> nie </college>
+<branch> ise </branch>
+<year>2015 </year>
+<email> sri@gmail.com </email>
+</p>
+</stu>
+
+<stu>
+<p>
+<usn> 4ni16is112   </usn>
+<name> subrahmanya </name>
+<college> nie </college>
+<branch> ise </branch>
+<year>2016 </year>
+<email> subbu@gmail.com </email>
+</p>
+</stu>
+
+<stu>
+<p>
+<usn> 4jc14cs111 </usn>
+<name> karthik </name>
+<college> jc </college>
+<branch> cse </branch>
+<year>2014 </year>
+<email> karu99@gmail.com </email>
+</p>
+</stu>
+
+</student>
+
+css
+
+usn{
+        font-size:30pt;color:red;
+}
+name{
+        font-size:50pt;color:blue;
+}
+
+branch{
+        font-size:20pt;color:yellow;
+}
+
+year{
+        font-size:25pt;color:green;
+}
+
+email{
+        font-size:20pt;color:red;
+}
+
+5b
+
+xml
+
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<?xml-stylesheet type = "text/xsl" href = "stu3.xsl"?>
+<student>
+
+<std-info>Student Information</std-info>
+<std>
+<std1>
+        USN:<usn>4NI15IS111</usn>
+        Name:<name>srinivas</name>
+        Name of the College:<college> NIE, Mysore</college>
+        Branch:<branch>ISE</branch>
+        Year of Joining:<year>2015</year>
+        e-mail id:<email>srini@gmail.com</email>
+</std1>
+<std2>
+        USN:<usn>4NI15IS112</usn>
+        Name:<name>Subrahmanya</name>
+        Name of the College:<college> NIE, Mysore</college>
+        Branch:<branch>ISE</branch>
+        Year of Joining:<year>2015</year>
+        e-mail id:<email>subbu@gmail.com</email>
+</std2>
+<std3>
+        USN:<usn>4NI15IS114</usn>
+        Name:<name>sugam</name>
+        Name of the College:<college> NIE, Mysore</college>
+        Branch:<branch>ISE</branch>
+        Year of Joining:<year>2016</year>
+        e-mail id:<email>suggi@gmail.com</email>
+</std3>
+</std>
+</student>
+
+xsl
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/student">
+  <html>
+  <body>
+    <h2>Student Information</h2>
+    <table border="1">
+      <tr>
+        <th>USN</th>
+        <th>Name</th>
+        <th>Name of the College</th>
+        <th>Branch</th>
+        <th>Year of Joining</th>
+        <th>E-Mail</th>
+      </tr>
+      <xsl:for-each select="/student/std/std1">
+       <tr>
+          <td><xsl:value-of select="usn"/></td>
+          <td><xsl:value-of select="name"/></td>
+          <td><xsl:value-of select="college"/></td>
+          <td><xsl:value-of select="branch"/></td>
+          <td><xsl:value-of select="year"/></td>
+          <td><xsl:value-of select="email"/></td>
+      </tr>
+    </xsl:for-each>
+        <xsl:for-each select="/student/std/std2">
+       <tr>
+          <td><xsl:value-of select="usn"/></td>
+          <td><xsl:value-of select="name"/></td>
+          <td><xsl:value-of select="college"/></td>
+          <td><xsl:value-of select="branch"/></td>
+          <td><xsl:value-of select="year"/></td>
+          <td><xsl:value-of select="email"/></td>
+      </tr>
+    </xsl:for-each>
+        <xsl:for-each select="/student/std/std3">
+       <tr>
+          <td><xsl:value-of select="usn"/></td>
+          <td><xsl:value-of select="name"/></td>
+          <td><xsl:value-of select="college"/></td>
+          <td><xsl:value-of select="branch"/></td>
+          <td><xsl:value-of select="year"/></td>
+          <td><xsl:value-of select="email"/></td>
+ </tr>
+    </xsl:for-each>
+
+    </table>
+  </body>
+  </html>
+
+7a 
+
+pl
+
+
+#!/usr/bin/perl
+my $qs=$ENV{'QUERY_STRING'};
+{my($field_name,$cmd)=split(/=/,$qs);
+print "Content-type:text/plain","\n\n";
+print `$cmd`;
+exit(0);
+
+html 
+
+<html>
+<head>
+<title> UNIX </title>
+</head>
+<body>
+<form action="http://192.168.13.6/~viis102/perl7a.pl", method="get">
+<input type=submit value=submit />
+<input type=reset value=reser />
+</form>
+</body>
+</html>
+
+7b
+
+html
+
+<html>
+<body>
+<form action="http://192.168.13.6/~viis102/perl7b.cgi">
+<input type="text" name="com">
+<input type="submit" value="Submit">
+</form>
+</html>
+
+cgi
+
+#!/usr/bin/perl
+use CGI':standard';
+print "content type: text/html \n\n";
+$prime = param('com');
+$prime = $prime + 0;
+
+$count=0;
+for(my $i=1;$i<=$prime;$i=$i +1)
+{
+        if($prime%$i==0)
+        {
+                $count +=1;
+        }
+}
+if($count ==2)
+{
+        print " $prime is prime";
+}
+else
+{
+        print "Not prime";
+}
+
+8a
+
+html
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> <title>USER NAME</title> </head>
+<body>
+<form action ="perl8a.cgi" method="post">
+<p> Username: <input type="text" name="Username" />
+<input type="submit" value="OK" /> </p>
+</form>
+</body>
+</html>
+
+cgi
+
+
+#!/usr/bin/perl
+use CGI':standard';
+print "content-type:text/html\n\n";
+$input=param("username");
+my @msgs=("Hey!","What's Up?","How Are You?");
+$i=int rand scalar @msgs;
+print "hi,$input,<br>message:",$msgs[$i];
+                                                                                                     1,1           All
+
+
+8b
+
+html
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> <title>Counting No. Of Visits to this Page</title> </head>
+<body>
+<form action="perl8b.cgi" method="post">
+<p> Number of Visits to this page
+<input type="submit" value="Click Here" /> </p>
+</form>
+</body>
+</html>
+
+cgi
+
+#!/usr/bin/perl
+use CGI':standard';
+print "content-type:text/html \n\n";
+
+open FILE, "<count.dat";
+my $count = <FILE>;
+close(FILE);
+$count++;
+open Handler, ">count.dat";
+print Handler $count ;
+close Handler;
+open FILE, "<count.dat";
+my $count2 = <FILE>;
+close(FILE);
+print ("This page has been viewed $count times");
+
+9a
+
+html
+
+<html>
+<form action="perl9a.cgi">
+<center>
+<input type=submit value=to_get_digital_clock_time>
+</center>
+</form>
+</html>
+
+cgi
+
+
+#!/usr/bin/perl
+# implementing a
+use CGI':standard';
+print "refresh:60 \n";
+
+($s,$m,$h)=localtime(time);
+print header();
+$h-=5;
+$webmaster="viis102";
+
+if ($h<6) {print  h1("Mornin'$webmaster Have a great day :) Now the time is $h hr $m mins!!");}
+elsif ($h=>6 & $h<12) {print h1("Good morning $webmaster ! Now the time is $h hr $m mins!!");}
+elsif ($h=>12 & $h<17) {print h1("Good afternoon $webmaster ! Now the time is $h hr $m mins!!");}
+elsif ($h=>17 & $h<22) {print h1("Good evening $webmaster ! Now the time is $h hr $m mins!!");}
+else {print h1("Go to bed $webmaster ! Now the time is $h hr $m mins!!");}
+
+open(check,"w -h $webmaster|");
+if(<check>=~/$webmaster/)
+{
+print " Currently WM logged in";
+}
+else
+{
+print " Currently WM not logged in";
+}
+
+9b
+
+html
+
+
+<?xml version="1.0" encoding="utf.8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Digital Clock Display Program</title>
+</head>
+<body>
+<form action="perl9b.cgi" method="post">
+<p>
+Digital Clock <input type="submit" value="Click Here" />
+</p>
+</form>
+</body>
+</html>
+
+cgi
+
+#!/usr/bin/perl
+use CGI':standard';
+ #refresh the display every second
+ print "Refresh:1\n";
+ print "Content-type:text/html\n\n";
+ ($s,$m,$h)=localtime(time);
+ print br "The current server time is $h:$m:$s";
+ print br "In words,the time is- $h hours, $m minutes and $s seconds";
+
+
+                                                                                                  1,1           All
+
+
+
+                                                                                                 1,0-1         All
+
+
+                                                                                                  1,1           All
+
+                                                                                                  1,1           All
+
+
+                                                                                                    1,1           All
+
+
+
+
+
+                                                                                                1,1           All
+
+
+
+
+
+                                                                                                   1,1           All
+
+
+                                                                                                1,1           All
+
+
+                                                                                                   1,1           All
+
+                                                                                                    1,1           Top
+
+
+
+
+
+
+                                                                                                      1,1           Top
+
+
+
+
+
+                                                                                                       1,1           All
+
+
+
+
+
+
+

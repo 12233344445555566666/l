@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/css" href="stu.css" ?>
+
+<student>
+
+<stu>
+<p>
+        <usn> 4ni16is131 <br/> </usn>
+        <name> Nagashree <br/> </name>
+        <college> NIE <br/> </college>
+        <branch> ISE <br/> </branch>
+        <year> 2019 <br/> </year>
+        <email> nagashree198@gmail.com <br/> </email>
+</p>
+</stu>
+
+<stu>
+<p>
+        <usn> 4ni16is027 <br/> </usn>
+        <name> Dhanush <br/> </name>
+        <college> NIE <br/> </college>
+        <branch> ISE <br/> </branch>
+        <year> 2019 <br/> </year>
+        <email> dhanush18aki@gmail.com <br/> </email>
+</p>
+</stu>
+
+<stu>
+<p>
+        <usn> 4gt14me001 <br/> </usn>
+        <name> Adarsh <br/> </name>
+        <college> GT-TC <br/> </college>
+        <branch> ME <br/> </branch>
+        <year> 2014 <br/> </year>
+        <email> adarshkashyap1998@gmail.com </email>
+</p>
+</stu>
+
+</student>

@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<?xml-stylesheet type = "text/xsl" href = "5bxsl.xsl"?>
+<student>
+
+<std-info>Student Information</std-info>
+<std>
+<std1>
+        USN:<usn>4NI15IS111</usn>
+        Name:<name>srinivas</name>
+        Name of the College:<college> NIE, Mysore</college>
+        Branch:<branch>ISE</branch>
+        Year of Joining:<year>2015</year>
+        e-mail id:<email>srini@gmail.com</email>
+</std1>
+<std2>
+        USN:<usn>4NI15IS112</usn>
+        Name:<name>Subrahmanya</name>
+        Name of the College:<college> NIE, Mysore</college>
+        Branch:<branch>ISE</branch>
+        Year of Joining:<year>2015</year>
+        e-mail id:<email>subbu@gmail.com</email>
+</std2>
+<std3>
+        USN:<usn>4NI15IS114</usn>
+        Name:<name>sugam</name>
+        Name of the College:<college> NIE, Mysore</college>
+        Branch:<branch>ISE</branch>
+        Year of Joining:<year>2016</year>
+        e-mail id:<email>suggi@gmail.com</email>
+</std3>
+</std>
+</student>
