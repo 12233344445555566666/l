@@ -1,0 +1,23 @@
+<html>
+<head>
+<title> Squares </title>
+</head>
+<body>
+<script language="Javascript" type="text/javascript">
+var n,sq;
+n=parseInt(prompt("enter the range"))
+var res="numbers squares";
+if(n<0)
+{
+alert("invalid number")
+}
+for(var i=1;i<=n;i++)
+{
+sq=i*i;
+res=res + "\n" + i + '_' + sq;
+document.write(i +" " +  sq + "<br/>")
+alert(res);
+}
+</script>
+</body>
+</html>
